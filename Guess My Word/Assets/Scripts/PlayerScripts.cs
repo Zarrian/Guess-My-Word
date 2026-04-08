@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Unity.Netcode;
 
 public class PlayerScripts : MonoBehaviour
 {
@@ -20,21 +21,30 @@ public class PlayerScripts : MonoBehaviour
 
     private void Start()
     {
-        ManagerPlayers.instance.playerLists.Add(this);
+
+        NetworkObject netcode = GetComponent<NetworkObject>();
+        if(netcode.IsLocalPlayer == false)
+        {
+            return;
+        }
+
+
+        ManagerPlayers.instance.playerLists.Value.Add(this);
 
         foreach (GuessButtons button in ManagerDisplayWords.instance.listButtons)
         {
             button.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(ValidAnswer);
         }
+
     }
+
+
 
 
     public Action OnValidAnswer;
     public void ValidAnswer()
     {
-        print("a appuyer sur un bouton");
-
-        timeLeft = ManagerQuizGame.instance.currentTime;
+        timeLeft = ManagerQuizGame.instance.currentTime.Value;
         print("Un des joueurs a validé une réponse !");
 
         //Dit au manager qu'un des joueurs a validé la réponse

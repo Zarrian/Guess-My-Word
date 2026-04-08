@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 public class ManagerQuizGame : MonoBehaviour
@@ -23,10 +24,9 @@ public class ManagerQuizGame : MonoBehaviour
 
     [Header("Timer")]
     public bool TimerOnGoing;
-    public float maxTimePerRound;
-    public float currentTime;
 
-
+    public NetworkVariable<float> maxTimePerRound;
+    public NetworkVariable<float> currentTime;
 
     public static ManagerQuizGame instance;
     private void Awake()
