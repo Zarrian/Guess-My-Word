@@ -1,0 +1,221 @@
+id,fr,en,es
+1,chien,dog,perro
+2,chat,cat,gato
+3,maison,house,casa
+4,eau,water,agua
+5,feu,fire,fuego
+6,terre,earth,tierra
+7,air,air,aire
+8,soleil,sun,sol
+9,lune,moon,luna
+10,voiture,car,coche
+11,livre,book,libro
+12,porte,door,puerta
+13,fenêtre,window,ventana
+14,table,table,mesa
+15,chaise,chair,silla
+16,pomme,apple,manzana
+17,pain,bread,pan
+18,fromage,cheese,queso
+19,lait,milk,leche
+20,café,coffee,café
+21,chien,dog,perro
+22,chat,cat,gato
+23,maison,house,casa
+24,eau,water,agua
+25,feu,fire,fuego
+26,terre,earth,tierra
+27,air,air,aire
+28,soleil,sun,sol
+29,lune,moon,luna
+30,voiture,car,coche
+31,livre,book,libro
+32,porte,door,puerta
+33,fenêtre,window,ventana
+34,table,table,mesa
+35,chaise,chair,silla
+36,pomme,apple,manzana
+37,pain,bread,pan
+38,fromage,cheese,queso
+39,lait,milk,leche
+40,café,coffee,café
+41,homme,man,hombre
+42,femme,woman,mujer
+43,enfant,child,niño
+44,famille,family,familia
+45,ami,friend,amigo
+46,amour,love,amor
+47,cœur,heart,corazón
+48,main,hand,mano
+49,tête,head,cabeza
+50,œil,eye,ojo
+51,bouche,mouth,boca
+52,nourriture,food,comida
+53,fruit,fruit,fruta
+54,légume,vegetable,vegetal
+55,riz,rice,arroz
+56,viande,meat,carne
+57,poisson,fish,pescado
+58,œuf,egg,huevo
+59,sucre,sugar,azúcar
+60,sel,salt,sal
+61,jour,day,día
+62,nuit,night,noche
+63,matin,morning,mañana
+64,soir,evening,tarde
+65,heure,hour,hora
+66,minute,minute,minuto
+67,temps,time,tiempo
+68,année,year,año
+69,mois,month,mes
+70,semaine,week,semana
+71,couleur,color,color
+72,rouge,red,rojo
+73,bleu,blue,azul
+74,vert,green,verde
+75,jaune,yellow,amarillo
+76,noir,black,negro
+77,blanc,white,blanco
+78,grand,big,grande
+79,petit,small,pequeño
+80,beau,beautiful,hermoso
+81,bon,good,bueno
+82,mauvais,bad,malo
+83,nouveau,new,nuevo
+84,vieux,old,viejo
+85,chaud,hot,caliente
+86,froid,cold,frío
+87,heureux,happy,feliz
+88,triste,sad,triste
+89,grand,tall,alto
+90,court,short,corto
+91,rapide,fast,rápido
+92,lent,slow,lento
+93,facile,easy,fácil
+94,difficile,difficult,difícil
+95,merci,thank you,gracias
+96,bonjour,hello,hola
+97,au revoir,goodbye,adiós
+98,oui,yes,sí
+99,non,no,no
+100,s'il vous plaît,please,por favor
+101,homme,man,hombre
+102,femme,woman,mujer
+103,enfant,child,niño
+104,famille,family,familia
+105,ami,friend,amigo
+106,amour,love,amor
+107,cœur,heart,corazón
+108,main,hand,mano
+109,tête,head,cabeza
+110,œil,eye,ojo
+111,bouche,mouth,boca
+112,nourriture,food,comida
+113,fruit,fruit,fruta
+114,légume,vegetable,vegetal
+115,riz,rice,arroz
+116,viande,meat,carne
+117,poisson,fish,pescado
+118,œuf,egg,huevo
+119,sucre,sugar,azúcar
+120,sel,salt,sal
+121,jour,day,día
+122,nuit,night,noche
+123,matin,morning,mañana
+124,soir,evening,tarde
+125,heure,hour,hora
+126,minute,minute,minuto
+127,temps,time,tiempo
+128,année,year,año
+129,mois,month,mes
+130,semaine,week,semana
+131,couleur,color,color
+132,rouge,red,rojo
+133,bleu,blue,azul
+134,vert,green,verde
+135,jaune,yellow,amarillo
+136,noir,black,negro
+137,blanc,white,blanco
+138,grand,big,grande
+139,petit,small,pequeño
+140,beau,beautiful,hermoso
+141,bon,good,bueno
+142,mauvais,bad,malo
+143,nouveau,new,nuevo
+144,vieux,old,viejo
+145,chaud,hot,caliente
+146,froid,cold,frío
+147,heureux,happy,feliz
+148,triste,sad,triste
+149,rapide,fast,rápido
+150,lent,slow,lento
+151,facile,easy,fácil
+152,difficile,difficult,difícil
+153,merci,thank you,gracias
+154,bonjour,hello,hola
+155,au revoir,goodbye,adiós
+156,oui,yes,sí
+157,non,no,no
+158,s'il vous plaît,please,por favor
+159,manger,to eat,comer
+160,boire,to drink,beber
+161,aller,to go,ir
+162,venir,to come,venir
+163,parler,to speak,hablar
+164,lire,to read,leer
+165,écrire,to write,escribir
+166,voir,to see,ver
+167,entendre,to hear,oír
+168,aimer,to like / love,gustar / amar
+169,vouloir,to want,querer
+170,pouvoir,to be able,poder
+171,savoir,to know,saber
+172,penser,to think,pensar
+173,faire,to do / make,hacer
+174,avoir,to have,tener
+175,être,to be,ser / estar
+176,école,school,escuela
+177,travail,work,trabajo
+178,maison,house,casa
+179,ville,city,ciudad
+180,pays,country,país
+181,voiture,car,coche
+182,train,train,tren
+183,avion,plane,avión
+184,vélo,bicycle,bicicleta
+185,route,road,carretera
+186,magasin,shop,tienda
+187,argent,money,dinero
+188,prix,price,precio
+189,acheter,to buy,comprar
+190,vendre,to sell,vender
+191,ordinateur,computer,ordenador
+192,téléphone,phone,teléfono
+193,musique,music,música
+194,film,movie,película
+195,jeu,game,juego
+196,sport,sport,deporte
+197,balle,ball,pelota
+198,courir,to run,correr
+199,nager,to swim,nadar
+200,danser,to dance,bailar
+201,dormir,to sleep,dormir
+202,réveiller,to wake up,despertar
+203,travailler,to work,trabajar
+204,étudier,to study,estudiar
+205,jouer,to play,jugar
+206,rire,to laugh,reír
+207,pleurer,to cry,llorar
+208,aider,to help,ayudar
+209,donner,to give,dar
+210,recevoir,to receive,recibir
+211,question,question,pregunta
+212,réponse,answer,respuesta
+213,livre,book,libro
+214,cahier,notebook,cuaderno
+215,crayon,pencil,lápiz
+216,tableau,board,pizarra
+217,professeur,teacher,profesor
+218,élève,student,alumno
+219,hôpital,hospital,hospital
+220,médecin,doctor,médico
