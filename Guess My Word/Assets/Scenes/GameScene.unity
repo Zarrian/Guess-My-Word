@@ -3018,6 +3018,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1906935870}
+  - component: {fileID: 1906935872}
   - component: {fileID: 1906935871}
   m_Layer: 0
   m_Name: ManagerPlayers
@@ -3053,8 +3054,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd9d5613676cdd4d82d6771bdb9aad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ManagerPlayers
-  playerLists: []
-  playerWaittingForValidation: []
+  ShowTopMostFoldoutHeaderGroup: 1
+  playerList:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+  playerWaitingForValidation:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+--- !u!114 &1906935872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906935869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 4238515863
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!1 &1910842756
 GameObject:
   m_ObjectHideFlags: 0
@@ -3123,8 +3156,16 @@ MonoBehaviour:
   originalLangage: 0
   langueToGuess: 0
   TimerOnGoing: 0
-  maxTimePerRound: 0
-  currentTime: 0
+  maxTimePerRound:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 0
+  currentTime:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 0
 --- !u!1 &1968236785
 GameObject:
   m_ObjectHideFlags: 0

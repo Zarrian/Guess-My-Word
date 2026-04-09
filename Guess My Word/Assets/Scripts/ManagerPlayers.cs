@@ -1,11 +1,12 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Security.Claims;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
-public class ManagerPlayers : MonoBehaviour
+public class ManagerPlayers : NetworkBehaviour
 {
-
     public static ManagerPlayers instance;
 
     private void Start()
@@ -14,10 +15,22 @@ public class ManagerPlayers : MonoBehaviour
         ManagerQuizGame.instance.OnEndRound += EndRound;
     }
 
-    [Header("Players")]
-    public NetworkVariable<List<PlayerScripts>> playerLists;
-    public NetworkVariable<List<PlayerScripts>> playerWaittingForValidation;
 
+    public NetworkVariable<int> numberPlayers = new NetworkVariable<int>(0);
+
+    public Dictionary<ulong, PlayerScripts> playersMap = new();
+
+    [Rpc(SendTo.Server)]
+    public void AddPlayerRpc(ulong clientId)
+    {
+        numberPlayers.Value++;
+
+        // On retrouve le script via le dictionnaire
+        if (playersMap.TryGetValue(clientId, out PlayerScripts player))
+        {
+            player.playerID = numberPlayers.Value;
+        }
+    }
 
     private void Awake()
     {
@@ -27,26 +40,15 @@ public class ManagerPlayers : MonoBehaviour
             Destroy(this);
     }
 
-
     public void PlayerValidAnswer(PlayerScripts PlayerValid)
     {
-        //Comfirm one of the players valid his answer
-        if (playerWaittingForValidation.Value.Contains(PlayerValid) == false)
-        {
-            playerWaittingForValidation.Value.Add(PlayerValid);
-        }
-
-        //If all players has valid their answer...
-        if (playerLists.Value.Count == playerWaittingForValidation.Value.Count)
-        {
-            ManagerQuizGame.instance.EndRound();
-        }
+            //ManagerQuizGame.instance.EndRound();
     }
 
 
     public void NextRound()
     {
-        playerWaittingForValidation.Value.Clear();
+  
     }
 
     public void EndRound()

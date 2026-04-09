@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class ManagerQuizGame : MonoBehaviour
+public class ManagerQuizGame : NetworkBehaviour
 {
     [Header("CSV Part")]
     public ReadCSV readCSV;
@@ -26,9 +26,12 @@ public class ManagerQuizGame : MonoBehaviour
     public bool TimerOnGoing;
 
     public NetworkVariable<float> maxTimePerRound;
+
     public NetworkVariable<float> currentTime;
 
     public static ManagerQuizGame instance;
+
+   
     private void Awake()
     {
         //Singleton
@@ -36,19 +39,6 @@ public class ManagerQuizGame : MonoBehaviour
             instance = this;
         else
             Destroy(this);
-    }
-
-    private void Update()
-    {
-        //if(TimerOnGoing == true)
-        //{
-        //    //Add condition : if 2 players valid their questions
-        //    if(currentTime > maxTimePerRound)
-        //    {
-        //        //EndRoundRight ?
-        //        EndRound();
-        //    }
-        //}
     }
 
     public Action OnStartGame;
@@ -65,10 +55,13 @@ public class ManagerQuizGame : MonoBehaviour
         OnEndGame?.Invoke();
     }
 
+
     public Action OnNewRound;
+    /// <summary>
+    /// Randomise a Word to guess and the langage to guess
+    /// </summary>
     public void NewRound()
     {
-
         print("NewRound !");
 
         //Random a word and a langue
@@ -92,7 +85,7 @@ public class ManagerQuizGame : MonoBehaviour
         langueToGuess = langageToGuessList[UnityEngine.Random.Range(0, langageToGuessList.Count)];
         WordToGuess = readCSV.ReadWord(wordLine, langueToGuess);
 
-        //Appelle Action
+        //Call Action
         OnNewRound?.Invoke();
     }
 
