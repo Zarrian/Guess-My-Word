@@ -1,5 +1,3 @@
-using JetBrains.Annotations;
-using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -35,7 +33,7 @@ public class ManagerDisplayWords : MonoBehaviour
         int randomButton = Random.Range(0, listButtons.Count);
         for (int i = 0; i < listButtons.Count; i++)
         {
-            if(i != randomButton)
+            if (i != randomButton)
                 listButtons[i].SetBadAnswer();
             else
                 listButtons[i].SetGoodAnswer();
