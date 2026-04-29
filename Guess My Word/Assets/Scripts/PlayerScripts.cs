@@ -61,8 +61,6 @@ public class PlayerScripts : NetworkBehaviour
             hasValidAnswer.Value = true;
             answerSelected.Value = new NetworkObjectReference(button.GetComponent<NetworkObject>());
 
-            print(AnswerSelectedButton.transform);
-
             //wordSelect = button.word.Value;
             //A faire s'abonner plus tard !!!!!!
             MovePlayerUIRpc();
@@ -88,6 +86,9 @@ public class PlayerScripts : NetworkBehaviour
         // ⚠️ OBLIGATOIRE : spawner l'objet sur le réseau
         playerUI.GetComponent<NetworkObject>().Spawn();
 
+        playerUI.GetComponent<Image>().color = Color.red;
+
+
         playerUI.transform.parent = canvas.transform;
     }
 
@@ -96,7 +97,6 @@ public class PlayerScripts : NetworkBehaviour
     {
         if (AnswerSelectedButton != null)
         {
-            print("change position UI");
             //Test de just déplacer les positions
             playerUI.transform.position = AnswerSelectedButton.transform.position;
         }
@@ -138,6 +138,19 @@ public class PlayerScripts : NetworkBehaviour
     {
         print("wrong answer");
         OnWrongAnswer?.Invoke();
+    }
+
+    public void CheckAnswer()
+    {
+        if (IsOwner == false)
+            return;
+
+        if (answerSelected.Value.NetworkObjectId == ManagerDisplayWords.instance.goodAnswer.Value.NetworkObjectId)
+        {
+            GoodAnswer();
+        }
+        else
+            WrongAnswer();
     }
 
 

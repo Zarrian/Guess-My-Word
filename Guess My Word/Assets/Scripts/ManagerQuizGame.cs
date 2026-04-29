@@ -23,15 +23,25 @@ public class ManagerQuizGame : NetworkBehaviour
     [HideInInspector] public int langueToGuess;
 
     [Header("Timer")]
-    public bool TimerOnGoing;
+    public NetworkVariable<bool> TimerOnGoing;
 
     public NetworkVariable<float> maxTimePerRound;
-
     public NetworkVariable<float> currentTime;
 
     public static ManagerQuizGame instance;
 
-   
+    private void FixedUpdate()
+    {
+        if(TimerOnGoing.Value == true)
+        {
+            currentTime.Value += Time.fixedDeltaTime;
+            if(currentTime.Value >= maxTimePerRound.Value)
+            {
+                EndRound();
+            }
+        }
+    }
+
     private void Awake()
     {
         //Singleton
@@ -62,6 +72,7 @@ public class ManagerQuizGame : NetworkBehaviour
     /// </summary>
     public void NewRound()
     {
+        TimerOnGoing.Value = true;
         print("NewRound !");
 
         //Random a word and a langue
@@ -93,11 +104,13 @@ public class ManagerQuizGame : NetworkBehaviour
     public Action OnEndRound;
     public void EndRound()
     {
-        print("EndRound");
-
+        TimerOnGoing.Value = false;
+        currentTime.Value = 0;
         OnEndRound?.Invoke();
     }
 
+
+    //Maybe i willl move this function elsewhere ?
     public Action OnShowResult;
     public void ShowResult()
     {

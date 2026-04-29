@@ -7,13 +7,11 @@ using UnityEngine.UI;
 [RequireComponent(typeof(NetworkObject))]
 public class GuessButtons : MonoBehaviour
 {
-
     public ReadCSV myCSV;
 
     public NetworkVariable<string> word;
     public bool isGoodAnswer = false;
     public SyncedText sync;
-
 
     public void SetGoodAnswer()
     {

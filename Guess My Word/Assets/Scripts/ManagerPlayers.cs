@@ -15,11 +15,15 @@ public class ManagerPlayers : NetworkBehaviour
         ManagerQuizGame.instance.OnEndRound += EndRound;
     }
 
-
     public NetworkVariable<int> numberPlayers = new NetworkVariable<int>(0);
 
     public Dictionary<ulong, PlayerScripts> playersMap = new();
 
+
+    /// <summary>
+    /// Function called when add Player
+    /// </summary>
+    /// <param name="clientId"></param>
     [Rpc(SendTo.Server)]
     public void AddPlayerRpc(ulong clientId)
     {
@@ -53,7 +57,12 @@ public class ManagerPlayers : NetworkBehaviour
 
     public void EndRound()
     {
+        print("endRound PlayerManager");
 
+        foreach (PlayerScripts player in playersMap.Values)
+        {
+            player.CheckAnswer();
+        }
     }
 
 
