@@ -1,7 +1,9 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerScripts : NetworkBehaviour
@@ -47,6 +49,8 @@ public class PlayerScripts : NetworkBehaviour
             InstantiatePlayerUIRpc();
         }
 
+        ManagerPlayers.instance.OnNextRound += RoundStart;
+        ManagerPlayers.instance.OnEndRound += RoundEnd;
         
     }
 
@@ -63,7 +67,7 @@ public class PlayerScripts : NetworkBehaviour
 
             //wordSelect = button.word.Value;
             //A faire s'abonner plus tard !!!!!!
-            MovePlayerUIRpc();
+            playerUI.GetComponent<Player_UI>().MovePlayerUIRpc(AnswerSelectedButton);
 
             OnValidAnswer?.Invoke();
         }
@@ -83,24 +87,25 @@ public class PlayerScripts : NetworkBehaviour
         GameObject newPlayerUI = Instantiate(playerUI, canvas.transform);
         playerUI = newPlayerUI;
 
+        playerUI.GetComponent<Player_UI>().player = this;
+
         // ⚠️ OBLIGATOIRE : spawner l'objet sur le réseau
         playerUI.GetComponent<NetworkObject>().Spawn();
-
-        playerUI.GetComponent<Image>().color = Color.red;
-
-
         playerUI.transform.parent = canvas.transform;
+  
     }
 
-    [Rpc(SendTo.Server)]
-    public void MovePlayerUIRpc()
-    {
-        if (AnswerSelectedButton != null)
-        {
-            //Test de just déplacer les positions
-            playerUI.transform.position = AnswerSelectedButton.transform.position;
-        }
-    }
+    //test move in Player UI
+
+    //[Rpc(SendTo.Server)]
+    //public void MovePlayerUIRpc()
+    //{
+    //    if (AnswerSelectedButton != null)
+    //    {
+    //        //Test de just déplacer les positions
+    //        playerUI.transform.position = AnswerSelectedButton.transform.position;
+    //    }
+    //}
 
 
     public override void OnNetworkSpawn()
@@ -128,7 +133,6 @@ public class PlayerScripts : NetworkBehaviour
     public Action OnGoodAnswer;
     public void GoodAnswer()
     {
-        print("Good answer");
         OnGoodAnswer?.Invoke();
     }
 
@@ -136,7 +140,6 @@ public class PlayerScripts : NetworkBehaviour
     public Action OnWrongAnswer;
     public void WrongAnswer()
     {
-        print("wrong answer");
         OnWrongAnswer?.Invoke();
     }
 
@@ -151,6 +154,18 @@ public class PlayerScripts : NetworkBehaviour
         }
         else
             WrongAnswer();
+    }
+
+    public Action OnRoundStart;
+    public void RoundStart()
+    {
+        OnRoundStart?.Invoke();
+    }
+
+    public Action OnRoundEnd;
+    public void RoundEnd()
+    {
+        OnRoundEnd?.Invoke();
     }
 
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using Unity.Netcode;
 using Unity.VisualScripting;
@@ -50,19 +51,21 @@ public class ManagerPlayers : NetworkBehaviour
     }
 
 
+    public Action OnNextRound;
     public void NextRound()
     {
-  
+        OnNextRound?.Invoke();
     }
 
+    public Action OnEndRound;
     public void EndRound()
     {
-        print("endRound PlayerManager");
-
         foreach (PlayerScripts player in playersMap.Values)
         {
             player.CheckAnswer();
         }
+
+        OnEndRound?.Invoke();
     }
 
 

@@ -73,7 +73,6 @@ public class ManagerQuizGame : NetworkBehaviour
     public void NewRound()
     {
         TimerOnGoing.Value = true;
-        print("NewRound !");
 
         //Random a word and a langue
         wordLine = UnityEngine.Random.Range(1, nbWord);
