@@ -8,6 +8,7 @@ public class Player_UI : MonoBehaviour
 
     private void Start()
     {
+        print("player");
         player.OnRoundStart += RoundStart;
         player.OnRoundEnd += RoundEnd;
         player.OnGoodAnswer += GoodAnswer;

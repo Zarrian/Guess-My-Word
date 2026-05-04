@@ -1,9 +1,7 @@
-using JetBrains.Annotations;
 using System;
 using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerScripts : NetworkBehaviour
@@ -37,7 +35,7 @@ public class PlayerScripts : NetworkBehaviour
         if (IsOwner == true)
         {
             NetworkObject netcode = GetComponent<NetworkObject>();
-            foreach (GuessButtons button in ManagerDisplayWords.instance.listButtons)
+            foreach (GuessButtons button in ManagerGameWords.instance.listButtons)
             {
                 NetworkObject netObj = button.GetComponent<NetworkObject>();
 
@@ -45,13 +43,11 @@ public class PlayerScripts : NetworkBehaviour
                     () => ValidAnswerRpc(netObj)
                 );
             }
-
-            InstantiatePlayerUIRpc();
         }
 
         ManagerPlayers.instance.OnNextRound += RoundStart;
         ManagerPlayers.instance.OnEndRound += RoundEnd;
-        
+
     }
 
     public Action OnValidAnswer;
@@ -76,6 +72,7 @@ public class PlayerScripts : NetworkBehaviour
     [Rpc(SendTo.Server)]
     public void InstantiatePlayerUIRpc()
     {
+
         // Vérifie que le Canvas existe
         GameObject canvas = GameObject.Find("Canvas");
         if (canvas == null)
@@ -85,14 +82,18 @@ public class PlayerScripts : NetworkBehaviour
         }
 
         GameObject newPlayerUI = Instantiate(playerUI, canvas.transform);
-        playerUI = newPlayerUI;
 
-        playerUI.GetComponent<Player_UI>().player = this;
+        if (IsOwner == true)
+        {
+            print("isowner player");
+            playerUI = newPlayerUI;
+            playerUI.GetComponent<Player_UI>().player = this;
+        }
 
         // ⚠️ OBLIGATOIRE : spawner l'objet sur le réseau
         playerUI.GetComponent<NetworkObject>().Spawn();
         playerUI.transform.parent = canvas.transform;
-  
+
     }
 
     //test move in Player UI
@@ -127,6 +128,7 @@ public class PlayerScripts : NetworkBehaviour
         // On attend que le manager soit spawné
         yield return new WaitUntil(() => ManagerPlayers.instance.IsSpawned);
         ManagerPlayers.instance.AddPlayerRpc(OwnerClientId);
+        InstantiatePlayerUIRpc();
     }
 
 
@@ -148,12 +150,12 @@ public class PlayerScripts : NetworkBehaviour
         if (IsOwner == false)
             return;
 
-        if (answerSelected.Value.NetworkObjectId == ManagerDisplayWords.instance.goodAnswer.Value.NetworkObjectId)
-        {
-            GoodAnswer();
-        }
-        else
-            WrongAnswer();
+        //if (answerSelected.Value.NetworkObjectId == ManagerGameWords.instance.goodAnswer.Value.NetworkObjectId)
+        //{
+        //    GoodAnswer();
+        //}
+        //else
+        //    WrongAnswer();
     }
 
     public Action OnRoundStart;

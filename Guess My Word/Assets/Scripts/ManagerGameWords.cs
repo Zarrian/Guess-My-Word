@@ -4,15 +4,16 @@ using Unity.Netcode;
 using UnityEngine;
 
 
-public class ManagerDisplayWords : MonoBehaviour
+public class ManagerGameWords : MonoBehaviour
 {
     public TextMeshProUGUI mainBoard;
 
     public List<GuessButtons> listButtons;
 
-    public NetworkVariable<NetworkObjectReference> goodAnswer;
+    //public NetworkVariable<NetworkObjectReference> goodAnswer;
+    //public GameObject goodAnswer;
 
-    public static ManagerDisplayWords instance;
+    public static ManagerGameWords instance;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class ManagerDisplayWords : MonoBehaviour
     [Rpc(SendTo.Server)]
     public void NewRound()
     {
+        print("test print si dans les deux cas se print ou po");
         mainBoard.GetComponent<SyncedText>().SetText(ManagerQuizGame.instance.WordDisplay.ToString());
 
         int randomButton = Random.Range(0, listButtons.Count);
@@ -41,7 +43,7 @@ public class ManagerDisplayWords : MonoBehaviour
             else
             {
                 listButtons[i].SetGoodAnswer();
-                goodAnswer.Value = new NetworkObjectReference(listButtons[i].GetComponent<NetworkObject>());
+                //goodAnswer.Value = new NetworkObjectReference(listButtons[i].GetComponent<NetworkObject>());
             }
 
         }
